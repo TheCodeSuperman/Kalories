@@ -8,13 +8,13 @@ products = {"rice" : 344,
             "cow sausages": 229,
             "sunflower oil" : 899,
             "green pea" : 75,
-            "garlick" : 103,
+            "garlic" : 103,
             "honey" : 312,
             "sugar" : 377,
             "black chocolate" : 546,
             "milk chocolate" : 552,
             "black tea with lemon and sugar" : 41,}
-print("Created by Artem Khodak, Stas Dubov")
+print("Created by Artem Khodak, Anton Khodak, Stas Dubov")
 print("WARNING: When you write product without prefix it means that it is the raw product")
 kk_answ = None
 def start():
