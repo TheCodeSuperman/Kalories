@@ -1,7 +1,10 @@
-kalories_answ = None
-products = {'rice' : 90}
+products = {"rice" : int(344),
+            "boiled rice" : int(116),
+            "carrot" : int(32)}
+print("WARNING: When you write product without prefix it means that it is the raw product")
+kilokalories_answ = None
 product = input("Write your product >>> ")
-kalories = int(input("Write the count of grames >>> "))
+grames = int(input("Write the count of grames >>> "))
 if product in products:
-    kalories_answ = products[product] / 100 * kalories
-    print("You've got %s kalories" % kalories_answ)
+    kilokalories_answ = products[product] / 100 * grames
+    print("You've got %s kilokalories" % kilokalories_answ)
