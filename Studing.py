@@ -17,20 +17,32 @@ products = {"rice" : 344,
 print("Created by Artem Khodak, Anton Khodak, Stas Dubov")
 print("WARNING: When you write product without prefix it means that it is the raw product")
 kk_answ = None
-def start():
-    product = input("Write your product >>> ")
-    if product in products:
-        grames = int(input("Write the count of grames >>> "))
-        kk_answ = int(round(products[product] / 100 * grames))
-        print("You've got %s kilokalories" % kk_answ)
-        q = input("Do you want to make another one? y/n >>> ")
-    else:
-        print("There isn't such product in list. You may try again")
-        start()
+
+def restart():
+    q = input("Do you want to make another one? y/n >>> ")
     if  q == "y":
         start()
     elif q == "n":
         exit(0)
     else:
         print("It isn't the correct answer. Write y/n >>>")
+        restart()
+def calculation(grames, product):
+    kk_answ = int(round(products[product] / 100 * grames))
+    print("You've got %s kilokalories" % kk_answ)
+    restart()
+def startgrames():
+    try:
+        grames = int(input("Write the count of grames >>> "))
+        calculation(grames, product)
+    except ValueError:
+        print("Grames should be number. Try again")
+        startgrames()
+def start():
+    product = input("Write your product >>> ")
+    if product in products:
+        startgrames()
+    else:
+        print("There isn't such product in list. You may try again")
+        start()
 start()
