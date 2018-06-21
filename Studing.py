@@ -31,17 +31,17 @@ def calculation(grames, product):
     kk_answ = int(round(products[product] / 100 * grames))
     print("You've got %s kilokalories" % kk_answ)
     restart()
-def startgrames():
+def startgrames(product):
     try:
         grames = int(input("Write the count of grames >>> "))
         calculation(grames, product)
     except ValueError:
         print("Grames should be number. Try again")
-        startgrames()
+        startgrames(product)
 def start():
     product = input("Write your product >>> ")
     if product in products:
-        startgrames()
+        startgrames(product)
     else:
         print("There isn't such product in list. You may try again")
         start()
