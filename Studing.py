@@ -19,17 +19,18 @@ print("WARNING: When you write product without prefix it means that it is the ra
 kk_answ = None
 def start():
     product = input("Write your product >>> ")
-    grames = int(input("Write the count of grames >>> "))
     if product in products:
+        grames = int(input("Write the count of grames >>> "))
         kk_answ = int(round(products[product] / 100 * grames))
         print("You've got %s kilokalories" % kk_answ)
+        q = input("Do you want to make another one? y/n >>> ")
     else:
         print("There isn't such product in list. You may try again")
         start()
-    q = input("Do you want to make another one? y/n >>> ")
     if  q == "y":
         start()
     elif q == "n":
         exit(0)
+    else:
+        print("It isn't the correct answer. Write y/n >>>")
 start()
-
