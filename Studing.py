@@ -17,7 +17,23 @@ products = {"rice" : 344,
 print("Created by Artem Khodak, Anton Khodak, Stas Dubov")
 print("WARNING: When you write product without prefix it means that it is the raw product")
 kk_answ = None
-
+kkset_answ = None
+setlist = []
+def setgrames(set):
+    qsetgrames = int(input("Write the count o grames >>> "))
+    setlist.append(round(int(products[set]) / 100 * qsetgrames))
+    startset()
+def startset():
+    set = None
+    while True:
+        set = input("Write your product or \"stop\" when set is done >>>")
+        if set in products:
+            setgrames(set)
+        elif set == "stop":
+            print(sum(setlist))
+            break
+        else:
+            print("There isn't such product in our list")
 def restart():
     q = input("Do you want to make another one? y/n >>> ")
     if  q == "y":
@@ -45,4 +61,13 @@ def start():
     else:
         print("There isn't such product in list. You may try again")
         start()
-start()
+def firstquiz():
+    startq = input("Write \"set\" to calculate several products or \"product\" to calculate a product >>> ")
+    if startq == "set":
+        startset()
+    elif startq  == "product":
+        start()
+    else:
+        print("Write \"set\" or \"product\" >>> ")
+        firstquiz()
+firstquiz()
