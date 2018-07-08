@@ -19,55 +19,55 @@ print("WARNING: When you write product without prefix it means that it is the ra
 kk_answ = None
 kkset_answ = None
 setlist = []
-def setgrames(set):
-    qsetgrames = int(input("Write the count o grames >>> "))
-    setlist.append(round(int(products[set]) / 100 * qsetgrames))
-    startset()
+def setgrams(set):
+    try:
+        qsetgrams = int(input("Write the count of grams >>> "))
+        setlist.append(round(int(products[set]) / 100 * qsetgrams))
+        startset()
+    except ValueError:
+        print("Grams should be number. Try again")
+        setgrams(set)
 def startset():
     set = None
     while True:
-        set = input("Write your product or \"stop\" when set is done >>>")
-        if set in products:
-            setgrames(set)
+        set = input("Write your product or \"stop\" when set is done >>> ")
+        if set in products and set != "stop":
+            setgrams(set)
         elif set == "stop":
-            print(sum(setlist))
+            print("Here's count of kilokalories in your set: %s kk" % sum(setlist))
+            firstquiz()
             break
         else:
             print("There isn't such product in our list")
-def restart():
-    q = input("Do you want to make another one? y/n >>> ")
-    if  q == "y":
-        start()
-    elif q == "n":
-        exit(0)
-    else:
-        print("It isn't the correct answer. Write y/n >>>")
-        restart()
-def calculation(grames, product):
-    kk_answ = int(round(products[product] / 100 * grames))
+def calculation(grams, product):
+    kk_answ = int(round(products[product] / 100 * grams))
     print("You've got %s kilokalories" % kk_answ)
-    restart()
-def startgrames(product):
+    firstquiz()
+def startgrams(product):
     try:
-        grames = int(input("Write the count of grames >>> "))
-        calculation(grames, product)
+        grams = int(input("Write the count of grames >>> "))
+        calculation(grams, product)
     except ValueError:
-        print("Grames should be number. Try again")
-        startgrames(product)
+        print("Grams should be number. Try again")
+        startgrams(product)
 def start():
     product = input("Write your product >>> ")
     if product in products:
-        startgrames(product)
+        startgrams(product)
     else:
         print("There isn't such product in list. You may try again")
         start()
 def firstquiz():
-    startq = input("Write \"set\" to calculate several products or \"product\" to calculate a product >>> ")
+    startq = input('''Write \"set\" to calculate several products
+or \"product\" to calculate a product
+or \"exit\" to exit program >>> ''')
     if startq == "set":
         startset()
     elif startq  == "product":
         start()
+    elif startq  == "exit":
+        exit(0)
     else:
-        print("Write \"set\" or \"product\" >>> ")
+        print("Write \"set, product or exit\" >>> ")
         firstquiz()
 firstquiz()
