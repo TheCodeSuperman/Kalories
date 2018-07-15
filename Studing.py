@@ -71,3 +71,7 @@ or \"exit\" to exit program >>> ''')
         print("Write \"set, product or exit\" >>> ")
         firstquiz()
 firstquiz()
+def startsave():
+    pass
+def setsave():
+    pass
