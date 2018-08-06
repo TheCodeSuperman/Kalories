@@ -34,15 +34,15 @@ def startset():
         if set in products and set != "stop":
             setgrams(set)
         elif set == "stop":
-            print("Here's count of kilokalories in your set: %s kk" % sum(setlist))
+            print(f"Here's count of kilokalories in your set: {sum(setlist)} kk")
             firstquiz()
             break
         else:
             print("There isn't such product in our list")
 def calculation(grams, product):
     kk_answ = int(round(products[product] / 100 * grams))
-    print("You've got %s kilokalories" % kk_answ)
-    firstquiz()
+    print(f"You've got {kk_answ} kilokalories")
+    startsave(product, grams, kk_answ)
 def startgrams(product):
     try:
         grams = int(input("Write the count of grames >>> "))
@@ -70,8 +70,13 @@ or \"exit\" to exit program >>> ''')
     else:
         print("Write \"set, product or exit\" >>> ")
         firstquiz()
+def startsave(product, grams, kk_answ):
+    savetext = f"Product: {product} \nCount of grams: {grams} \nCount of kilokalories {kk_answ}"
+    save1 = input("Do you want to create a save of your result (y/n) >>> ")
+    savefile = open("kk_save1", "w")
+    if save1 == "y":
+        savefile.write(str(savetext))
+        firstquiz()
+    elif save1 == "n":
+        firstquiz()
 firstquiz()
-def startsave():
-    pass
-def setsave():
-    pass
